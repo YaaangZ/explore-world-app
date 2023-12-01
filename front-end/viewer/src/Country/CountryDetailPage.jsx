@@ -54,7 +54,6 @@ const CountryDetailPage = () => {
 
   return (
     <div className="country-detail-page">
-
         <div className="country-content">
             <div className="country-info-container">
                 <div className="country-flag-name">
@@ -62,8 +61,6 @@ const CountryDetailPage = () => {
                     <h1>{countryData.name.common}</h1>
                 </div>
                 <div className="country-details">
-
-                   
                     <Typography variant='h6'>Official Name: {displayValue(countryData.name.official)}</Typography>
                     <Typography variant='h6'>Capital: {displayValue(countryData.capital)}</Typography>
                     <Typography variant='h6'>ISO Code: {displayValue(countryData.cca3)}</Typography>
@@ -75,14 +72,12 @@ const CountryDetailPage = () => {
                     <Typography variant='h6'>Population: {displayValue(countryData.population)}</Typography>
                     <Typography variant='h6'>Drive Side: {displayValue(countryData.car?.side)}</Typography>
                     <Typography variant='h6'>Time Zones: {displayValue(countryData.timezones)}</Typography>
-
                 </div>
             </div>
             <Button variant="outlined" onClick={handleBack}>
                 Back
             </Button>
         </div>
-
 </div>
   );
 };
@@ -90,26 +85,26 @@ const CountryDetailPage = () => {
 export default CountryDetailPage;
 
 
-  function displayValue(value) {
-    if (value) {
-      if (typeof value === 'object') {
-        if (Array.isArray(value)) {
-          return value.length > 0 ? value.join(", ") : "Unavailable";
-        } else {
-          const values = Object.values(value);
-          return values.length > 0 && values.every(v => v) ? values.join(", ") : "Unavailable";
-        }
+function displayValue(value) {
+  if (value) {
+    if (typeof value === 'object') {
+      if (Array.isArray(value)) {
+        return value.length > 0 ? value.join(", ") : "Unavailable";
+      } else {
+        const values = Object.values(value);
+        return values.length > 0 && values.every(v => v) ? values.join(", ") : "Unavailable";
       }
-      return value;
     }
-    return "Unavailable";
+    return value;
   }
+  return "Unavailable";
+}
 
-  function displayCurrencies(currencies) {
-    if (currencies && typeof currencies === 'object' && Object.keys(currencies).length > 0) {
-      return Object.values(currencies).map(currency => {
-        return `${currency.name} (${currency.symbol})`;
-      }).join(", ");
-    }
-    return "Unavailable";
+function displayCurrencies(currencies) {
+  if (currencies && typeof currencies === 'object' && Object.keys(currencies).length > 0) {
+    return Object.values(currencies).map(currency => {
+      return `${currency.name} (${currency.symbol})`;
+    }).join(", ");
   }
+  return "Unavailable";
+}
